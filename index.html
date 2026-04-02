@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>No Brainer — B2B SaaS Signal Intelligence</title>
+  <meta name="description" content="No Brainer surfaces the B2B SaaS companies showing the strongest buying signals each week — leadership hires, product launches, new client wins, and funding. Delivered every Sunday.">
+  <meta property="og:title" content="No Brainer — B2B SaaS Signal Intelligence">
+  <meta property="og:description" content="Know which startups to reach out to this week. Delivered every Sunday.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent: #c8f562;
+      --bg: #0a0a0f;
+      --surface: #0f0f16;
+      --border: rgba(255,255,255,0.08);
+      --text: #e8e6e0;
+      --text-primary: #f0ede6;
+      --text-muted: rgba(232,230,224,0.5);
+      --text-dim: rgba(232,230,224,0.3);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 4rem;
+      border-bottom: 0.5px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(10,10,15,0.95);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 22px;
+      color: var(--text-primary);
+      letter-spacing: -0.5px;
+    }
+
+    .logo span { color: var(--accent); }
+
+    .nav-cta {
+      background: var(--accent);
+      color: #0a0a0f;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 100px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* HERO */
+    .hero {
+      padding: 7rem 4rem 5rem;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(200,245,98,0.1);
+      border: 0.5px solid rgba(200,245,98,0.3);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 11px;
+      color: var(--accent);
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    .eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(40px, 6vw, 68px);
+      line-height: 1.1;
+      color: var(--text-primary);
+      margin: 0 0 1.5rem;
+      letter-spacing: -1px;
+    }
+
+    h1 em { font-style: italic; color: var(--accent); }
+
+    .hero-sub {
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--text-muted);
+      max-width: 560px;
+      margin: 0 auto 2.5rem;
+      font-weight: 300;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0a0a0f;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 100px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .btn-primary:hover { opacity: 0.85; }
+
+    .btn-ghost {
+      background: transparent;
+      color: rgba(232,230,224,0.7);
+      border: 0.5px solid rgba(255,255,255,0.2);
+      padding: 14px 32px;
+      border-radius: 100px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.4); }
+
+    .price-note {
+      margin-top: 1rem;
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+
+    /* SECTIONS */
+    .section {
+      padding: 5rem 4rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .divider {
+      height: 0.5px;
+      background: var(--border);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      font-family: 'DM Mono', monospace;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(28px, 4vw, 42px);
+      color: var(--text-primary);
+      margin: 0 0 1rem;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+    }
+
+    .section-sub {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 480px;
+      line-height: 1.6;
+      font-weight: 300;
+      margin-bottom: 3rem;
+    }
+
+    /* SIGNALS GRID */
+    .signals-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .signal-card {
+      background: var(--surface);
+      padding: 2rem;
+    }
+
+    .signal-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .signal-icon.green { background: rgba(200,245,98,0.12); }
+    .signal-icon.blue { background: rgba(99,153,255,0.12); }
+    .signal-icon.amber { background: rgba(239,159,39,0.12); }
+    .signal-icon.pink { background: rgba(212,83,126,0.12); }
+
+    .signal-pts {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 0.5px;
+      margin-bottom: 0.5rem;
+    }
+
+    .signal-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .signal-desc {
+      font-size: 13px;
+      color: rgba(232,230,224,0.45);
+      line-height: 1.5;
+      font-weight: 300;
+    }
+
+    /* DIGEST PREVIEW */
+    .digest-preview {
+      background: var(--surface);
+      border: 0.5px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .digest-header {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 0.5px solid rgba(255,255,255,0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .digest-title-bar {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 0.5px;
+    }
+
+    .digest-badge {
+      background: rgba(200,245,98,0.1);
+      color: var(--accent);
+      font-size: 11px;
+      font-family: 'DM Mono', monospace;
+      padding: 3px 10px;
+      border-radius: 100px;
+      border: 0.5px solid rgba(200,245,98,0.2);
+    }
+
+    .company-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      padding: 1.25rem 1.5rem;
+      border-bottom: 0.5px solid rgba(255,255,255,0.04);
+      align-items: start;
+    }
+
+    .company-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .company-signal {
+      font-size: 12px;
+      color: rgba(232,230,224,0.4);
+      line-height: 1.4;
+      font-weight: 300;
+    }
+
+    .company-signal strong { color: var(--accent); font-weight: 500; }
+
+    .score-badge {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent);
+      background: rgba(200,245,98,0.08);
+      padding: 4px 10px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    .company-row-fade {
+      opacity: 0.35;
+      border-bottom: none;
+    }
+
+    /* HOW IT WORKS */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .step-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: rgba(232,230,224,0.2);
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+
+    .step-title {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .step-desc {
+      font-size: 13px;
+      color: rgba(232,230,224,0.4);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .built-bar {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 2.5rem;
+      padding-top: 2.5rem;
+      border-top: 0.5px solid var(--border);
+    }
+
+    .built-item {
+      font-size: 12px;
+      color: var(--text-dim);
+      font-family: 'DM Mono', monospace;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .built-item::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(200,245,98,0.4);
+    }
+
+    /* PRICING */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .price-card {
+      background: var(--surface);
+      border: 0.5px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+    }
+
+    .price-card.featured {
+      border-color: rgba(200,245,98,0.25);
+      background: #111118;
+    }
+
+    .plan-badge {
+      font-size: 11px;
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .plan-badge.featured-badge { color: var(--accent); }
+
+    .featured-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .plan-price {
+      font-family: 'DM Serif Display', serif;
+      font-size: 48px;
+      color: var(--text-primary);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .plan-period {
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+    }
+
+    .plan-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 0.5px solid var(--border);
+      font-weight: 300;
+    }
+
+    .plan-features {
+      list-style: none;
+      margin: 0 0 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .plan-features li {
+      font-size: 13px;
+      color: rgba(232,230,224,0.55);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 300;
+    }
+
+    .check {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: rgba(200,245,98,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .check::after {
+      content: '';
+      width: 4px;
+      height: 7px;
+      border-right: 1.5px solid var(--accent);
+      border-bottom: 1.5px solid var(--accent);
+      transform: rotate(45deg) translate(-1px, -1px);
+    }
+
+    .plan-btn {
+      width: 100%;
+      padding: 13px;
+      border-radius: 100px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      background: transparent;
+      color: rgba(232,230,224,0.6);
+      border: 0.5px solid rgba(255,255,255,0.15);
+      transition: border-color 0.2s;
+    }
+
+    .plan-btn:hover { border-color: rgba(255,255,255,0.3); }
+
+    .plan-btn.featured-btn {
+      background: var(--accent);
+      color: #0a0a0f;
+      border: none;
+      font-weight: 600;
+    }
+
+    .plan-btn.featured-btn:hover { opacity: 0.85; }
+
+    .segments {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .seg-pill {
+      background: rgba(255,255,255,0.04);
+      border: 0.5px solid rgba(255,255,255,0.1);
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-size: 12px;
+      color: rgba(232,230,224,0.4);
+      font-family: 'DM Mono', monospace;
+    }
+
+    .seg-pill.active {
+      background: rgba(200,245,98,0.08);
+      border-color: rgba(200,245,98,0.25);
+      color: var(--accent);
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 3rem 4rem;
+      border-top: 0.5px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px;
+      color: rgba(240,237,230,0.4);
+    }
+
+    .footer-logo span { color: var(--accent); }
+
+    .footer-copy {
+      font-size: 12px;
+      color: rgba(232,230,224,0.2);
+      font-family: 'DM Mono', monospace;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 1.25rem 1.5rem; }
+      .hero { padding: 4rem 1.5rem 3rem; }
+      .section { padding: 3rem 1.5rem; }
+      footer { padding: 2rem 1.5rem; }
+      .steps { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">No Brainer<span>.</span></div>
+    <button class="nav-cta" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Get access</button>
+  </nav>
+
+  <section class="hero">
+    <div class="eyebrow">
+      <div class="eyebrow-dot"></div>
+      Signal intelligence · Delivered every Sunday
+    </div>
+    <h1>Start every week knowing<br>exactly <em>who to reach out to</em></h1>
+    <p class="hero-sub">No Brainer scans hundreds of B2B SaaS companies every week and surfaces the ones showing the strongest buying signals — delivered Sunday so you're ready to move when Monday hits.</p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Get this week's list</button>
+      <button class="btn-ghost" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">See how it works</button>
+    </div>
+    <p class="price-note">$49/month per segment · Cancel anytime</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="section">
+    <div class="section-label">The signals</div>
+    <h2>Four signals that predict<br>buying intent</h2>
+    <p class="section-sub">Every company is scored weekly based on what's happening right now — not last quarter.</p>
+    <div class="signals-grid">
+      <div class="signal-card">
+        <div class="signal-icon green">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="3" stroke="#c8f562" stroke-width="1.5"/><path d="M2 14c0-3.314 2.686-5 6-5s6 1.686 6 5" stroke="#c8f562" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="signal-pts">+3 pts</div>
+        <div class="signal-title">Leadership hire</div>
+        <div class="signal-desc">A VP, Director, C-level, or Head of hired in the last 7 days. New leaders bring new budgets and new vendor decisions.</div>
+      </div>
+      <div class="signal-card">
+        <div class="signal-icon blue">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="2" stroke="#6399ff" stroke-width="1.5"/><path d="M5 7h6M5 10h4" stroke="#6399ff" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="signal-pts">+1 pt each · max 3</div>
+        <div class="signal-title">Job openings</div>
+        <div class="signal-desc">Roles posted recently. Active hiring is a direct signal of growth mode and active spending.</div>
+      </div>
+      <div class="signal-card">
+        <div class="signal-icon amber">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2L9.8 6.2L14 7L11 9.8L11.8 14L8 11.8L4.2 14L5 9.8L2 7L6.2 6.2L8 2Z" stroke="#ef9f27" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="signal-pts">+2 pts</div>
+        <div class="signal-title">Company news</div>
+        <div class="signal-desc">Product launches, new client wins, and partnerships in the last 14 days.</div>
+      </div>
+      <div class="signal-card">
+        <div class="signal-icon pink">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v2M8 11v2M3 8H5M11 8h2" stroke="#d4537e" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="8" r="3" stroke="#d4537e" stroke-width="1.5"/></svg>
+        </div>
+        <div class="signal-pts">+5 pts</div>
+        <div class="signal-title">Recent funding</div>
+        <div class="signal-desc">Raised in the last 7 days. Fresh capital means active vendor decisions happening right now.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="section">
+    <div class="section-label">This week's digest</div>
+    <h2>What lands in your inbox<br>every Sunday</h2>
+    <p class="section-sub">The highest-signal companies that week, ranked by score, with context on why each one matters and direct links to every signal.</p>
+    <div class="digest-preview">
+      <div class="digest-header">
+        <div class="digest-title-bar">NO BRAINER · B2B SAAS SEGMENT · WEEK OF APR 1, 2026</div>
+        <div class="digest-badge">This week's targets</div>
+      </div>
+      <div class="company-row">
+        <div>
+          <div class="company-name">Paraform</div>
+          <div class="company-signal"><strong>New hire</strong> · Andrew Montalvo joined as Director of Sales Development · roles opened recently</div>
+        </div>
+        <div class="score-badge">8 pts</div>
+      </div>
+      <div class="company-row">
+        <div>
+          <div class="company-name">Cloaked</div>
+          <div class="company-signal"><strong>Roles opened</strong> · Founding AE, QA Engineer, Fullstack Engineer · $375M Series B raised Mar 19</div>
+        </div>
+        <div class="score-badge">5 pts</div>
+      </div>
+      <div class="company-row">
+        <div>
+          <div class="company-name">Nominal</div>
+          <div class="company-signal"><strong>New client</strong> · Signed Mach Industries (US Army/Air Force) on Mar 24 · 17 roles opened</div>
+        </div>
+        <div class="score-badge">5 pts</div>
+      </div>
+      <div class="company-row">
+        <div>
+          <div class="company-name">Chowbus</div>
+          <div class="company-signal"><strong>IPO signal</strong> · Hiring Controller with S-1 filing experience · $81M raised</div>
+        </div>
+        <div class="score-badge">5 pts</div>
+      </div>
+      <div class="company-row company-row-fade">
+        <div>
+          <div class="company-name">+ more companies this week</div>
+          <div class="company-signal">Subscribe to see the full list with signal details, LinkedIn links, and the data sheet</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="section" id="how">
+    <div class="section-label">How it works</div>
+    <h2>Powered by AI.<br>Curated by humans.</h2>
+    <div class="steps">
+      <div>
+        <div class="step-num">01</div>
+        <div class="step-title">We scan your segment</div>
+        <div class="step-desc">Hundreds of B2B SaaS companies are monitored weekly for leadership hires, job postings, news, and funding events.</div>
+      </div>
+      <div>
+        <div class="step-num">02</div>
+        <div class="step-title">Signals are scored</div>
+        <div class="step-desc">Each company receives a weekly score based on how many signals fired and how recent they are.</div>
+      </div>
+      <div>
+        <div class="step-num">03</div>
+        <div class="step-title">Humans curate the list</div>
+        <div class="step-desc">Every signal is verified before it makes the cut. No hallucinated hires, no stale news, no wrong LinkedIn profiles.</div>
+      </div>
+      <div>
+        <div class="step-num">04</div>
+        <div class="step-title">You get it Sunday</div>
+        <div class="step-desc">Delivered before your week starts — so you know exactly who to call on Monday morning.</div>
+      </div>
+    </div>
+    <div class="built-bar">
+      <div class="built-item">Powered by AI</div>
+      <div class="built-item">Curated by humans</div>
+      <div class="built-item">Verified weekly</div>
+      <div class="built-item">Delivered every Sunday</div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="section" id="pricing">
+    <div class="section-label">Pricing</div>
+    <h2>One segment.<br>One simple price.</h2>
+    <p class="section-sub">Each segment is its own dedicated weekly feed. Subscribe to one — or all of them.</p>
+
+    <div class="segments">
+      <div class="seg-pill active">B2B SaaS · US & Canada · Live now</div>
+      <div class="seg-pill">Fintech · Coming soon</div>
+      <div class="seg-pill">Dev Tools · Coming soon</div>
+      <div class="seg-pill">ML / AI · Coming soon</div>
+    </div>
+
+    <div class="pricing-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); max-width: 700px;">
+      <div class="price-card">
+        <div class="plan-badge">Solo</div>
+        <div class="plan-price">$49</div>
+        <div class="plan-period">per segment · per month</div>
+        <div class="plan-desc">For individual consultants, freelancers, and solo practitioners who want the edge every week.</div>
+        <ul class="plan-features">
+          <li><span class="check"></span>1 email recipient</li>
+          <li><span class="check"></span>Weekly signal digest every Sunday</li>
+          <li><span class="check"></span>Highest-signal companies that week</li>
+          <li><span class="check"></span>Leadership hire names + LinkedIn URLs</li>
+          <li><span class="check"></span>Direct links to job postings and news</li>
+          <li><span class="check"></span>Downloadable signal data sheet</li>
+          <li><span class="check"></span>Cancel anytime</li>
+        </ul>
+        <button class="plan-btn">Get started</button>
+      </div>
+
+      <div class="price-card featured">
+        <div class="plan-badge featured-badge"><span class="featured-dot"></span>Agency · Most popular</div>
+        <div class="plan-price">$99</div>
+        <div class="plan-period">per segment · per month</div>
+        <div class="plan-desc">For agencies and teams who want everyone on the same intel — no seat counting, no limits.</div>
+        <ul class="plan-features">
+          <li><span class="check"></span>Unlimited email recipients</li>
+          <li><span class="check"></span>Weekly signal digest every Sunday</li>
+          <li><span class="check"></span>Highest-signal companies that week</li>
+          <li><span class="check"></span>Leadership hire names + LinkedIn URLs</li>
+          <li><span class="check"></span>Direct links to job postings and news</li>
+          <li><span class="check"></span>Downloadable signal data sheet</li>
+          <li><span class="check"></span>Cancel anytime</li>
+        </ul>
+        <button class="plan-btn featured-btn">Get started</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">No Brainer<span>.</span></div>
+    <div class="footer-copy">© 2026 nobrainerinsights.com · Signal intelligence for people who sell to startups</div>
+  </footer>
+
+</body>
+</html>
