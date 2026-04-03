@@ -39,7 +39,6 @@
 
     a { color: inherit; text-decoration: none; }
 
-    /* NAV */
     nav {
       display: flex;
       justify-content: space-between;
@@ -77,7 +76,6 @@
 
     .nav-cta:hover { opacity: 0.85; }
 
-    /* HERO */
     .hero {
       padding: 7rem 4rem 5rem;
       max-width: 900px;
@@ -113,7 +111,7 @@
 
     h1 {
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(40px, 6vw, 68px);
+      font-size: clamp(36px, 5.5vw, 62px);
       line-height: 1.1;
       color: var(--text-primary);
       margin: 0 0 1.5rem;
@@ -126,7 +124,7 @@
       font-size: 18px;
       line-height: 1.7;
       color: var(--text-muted);
-      max-width: 560px;
+      max-width: 580px;
       margin: 0 auto 2.5rem;
       font-weight: 300;
     }
@@ -175,7 +173,6 @@
       color: var(--text-dim);
     }
 
-    /* SECTIONS */
     .section {
       padding: 5rem 4rem;
       max-width: 1100px;
@@ -216,59 +213,135 @@
       margin-bottom: 3rem;
     }
 
-    /* SIGNALS GRID */
-    .signals-grid {
+    .scenario-block {
+      background: var(--surface);
+      border: 0.5px solid rgba(200,245,98,0.15);
+      border-radius: 20px;
+      padding: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .scenario-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    .scenario-tag-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .scenario-story {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--text-muted);
+      font-weight: 300;
+      margin-bottom: 1.25rem;
+    }
+
+    .scenario-story strong {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .scenario-insight {
+      font-size: 13px;
+      color: rgba(200,245,98,0.7);
+      font-family: 'DM Mono', monospace;
+      border-top: 0.5px solid var(--border);
+      padding-top: 1rem;
+      line-height: 1.5;
+    }
+
+    .scenario-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    .scenario-mini {
+      background: rgba(255,255,255,0.03);
+      border: 0.5px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+    }
+
+    .scenario-mini-tag {
+      font-size: 11px;
+      font-family: 'DM Mono', monospace;
+      color: var(--text-dim);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .scenario-mini-text {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .scenario-mini-text strong {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .signals-strip {
+      display: flex;
       gap: 1px;
       background: rgba(255,255,255,0.06);
-      border-radius: 16px;
+      border-radius: 14px;
       overflow: hidden;
+      margin-top: 3rem;
     }
 
-    .signal-card {
+    .signal-item {
+      flex: 1;
       background: var(--surface);
-      padding: 2rem;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
     }
 
-    .signal-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      margin-bottom: 1.25rem;
+    .signal-item-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-
-    .signal-icon.green { background: rgba(200,245,98,0.12); }
-    .signal-icon.blue { background: rgba(99,153,255,0.12); }
-    .signal-icon.amber { background: rgba(239,159,39,0.12); }
-    .signal-icon.pink { background: rgba(212,83,126,0.12); }
-
-    .signal-pts {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: var(--text-dim);
-      letter-spacing: 0.5px;
       margin-bottom: 0.5rem;
     }
 
-    .signal-title {
-      font-size: 15px;
+    .signal-item-icon.green { background: rgba(200,245,98,0.12); }
+    .signal-item-icon.blue { background: rgba(99,153,255,0.12); }
+    .signal-item-icon.amber { background: rgba(239,159,39,0.12); }
+    .signal-item-icon.pink { background: rgba(212,83,126,0.12); }
+
+    .signal-item-title {
+      font-size: 14px;
       font-weight: 500;
       color: var(--text-primary);
-      margin-bottom: 0.5rem;
     }
 
-    .signal-desc {
-      font-size: 13px;
-      color: rgba(232,230,224,0.45);
+    .signal-item-desc {
+      font-size: 12px;
+      color: var(--text-dim);
       line-height: 1.5;
       font-weight: 300;
     }
 
-    /* DIGEST PREVIEW */
     .digest-preview {
       background: var(--surface);
       border: 0.5px solid var(--border);
@@ -339,12 +412,8 @@
       white-space: nowrap;
     }
 
-    .company-row-fade {
-      opacity: 0.35;
-      border-bottom: none;
-    }
+    .company-row-fade { opacity: 0.35; border-bottom: none; }
 
-    /* HOW IT WORKS */
     .steps {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -400,7 +469,6 @@
       background: rgba(200,245,98,0.4);
     }
 
-    /* PRICING */
     .pricing-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -552,7 +620,6 @@
       color: var(--accent);
     }
 
-    /* FOOTER */
     footer {
       padding: 3rem 4rem;
       border-top: 0.5px solid var(--border);
@@ -577,7 +644,6 @@
       font-family: 'DM Mono', monospace;
     }
 
-    /* RESPONSIVE */
     @media (max-width: 768px) {
       nav { padding: 1.25rem 1.5rem; }
       .hero { padding: 4rem 1.5rem 3rem; }
@@ -585,6 +651,8 @@
       footer { padding: 2rem 1.5rem; }
       .steps { grid-template-columns: 1fr; }
       .pricing-grid { grid-template-columns: 1fr; }
+      .signals-strip { flex-direction: column; }
+      .scenario-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -600,53 +668,83 @@
       <div class="eyebrow-dot"></div>
       Signal intelligence · Delivered every Sunday
     </div>
-    <h1>Start every week knowing<br>exactly <em>who to reach out to</em></h1>
-    <p class="hero-sub">No Brainer scans hundreds of B2B SaaS companies every week and surfaces the ones showing the strongest buying signals — delivered Sunday so you're ready to move when Monday hits.</p>
+    <h1>By the time you find out a startup is ready to buy, <em>someone else is already in the room</em></h1>
+    <p class="hero-sub">No Brainer tracks hundreds of B2B SaaS companies every week and surfaces the ones showing growth signals right now — so you reach out before your competitors even know what happened.</p>
     <div class="hero-actions">
       <button class="btn-primary" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Get this week's list</button>
-      <button class="btn-ghost" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">See how it works</button>
+      <button class="btn-ghost" onclick="document.getElementById('scenarios').scrollIntoView({behavior:'smooth'})">See how it works</button>
     </div>
     <p class="price-note">$49/month per segment · Cancel anytime</p>
   </section>
 
   <div class="divider"></div>
 
+  <section class="section" id="scenarios">
+    <div class="section-label">Who this is for</div>
+    <h2>The same signal.<br>A different opportunity for everyone.</h2>
+    <p class="section-sub">Every week, something changes at a funded startup. The people who act on it first win the business.</p>
+
+    <div class="scenario-block">
+      <div class="scenario-tag"><div class="scenario-tag-dot"></div>Marketing agencies &amp; freelancers</div>
+      <p class="scenario-story">A startup raises a <strong>$20M Series A on Monday</strong>. By Thursday they announce a <strong>new CMO</strong>. That's not a coincidence — it's a buying signal. The moment that CMO starts, they'll be evaluating agencies, hiring contractors, buying martech, and planning campaigns. <strong>No Brainer puts that signal in your inbox on Sunday</strong>, before the CMO even starts their first day. You reach out early, you get the meeting. Everyone else reaches out after the vendor list is locked.</p>
+      <div class="scenario-insight">→ The window is the first 30 days after a CMO joins. No Brainer tells you the moment it opens.</div>
+    </div>
+
+    <div class="scenario-grid">
+      <div class="scenario-mini">
+        <div class="scenario-mini-tag">SaaS vendors &amp; tools</div>
+        <p class="scenario-mini-text">A startup raises a Series A and hires a new <strong>VP of Sales</strong>. In their first 90 days they will evaluate every tool in the stack — CRM, sequencing, enablement, analytics. <strong>The vendors who reach out before that list is made get the meeting. Everyone else gets ignored.</strong></p>
+      </div>
+      <div class="scenario-mini">
+        <div class="scenario-mini-tag">PR &amp; events agencies</div>
+        <p class="scenario-mini-text">A startup hires a new <strong>CMO</strong>. Campaigns get planned, events get booked, press releases get written. <strong>The agency that reaches out in the first two weeks gets the brief. The ones who wait get the "we already have someone" reply.</strong></p>
+      </div>
+      <div class="scenario-mini">
+        <div class="scenario-mini-tag">Recruiters &amp; staffing</div>
+        <p class="scenario-mini-text">A startup closes a Series A and posts <strong>15 open roles overnight</strong>. They have no internal recruiting infrastructure and a board telling them to hire fast. <strong>The recruiter who calls on Monday already knowing this wins the retainer before the startup even starts looking for help.</strong></p>
+      </div>
+      <div class="scenario-mini">
+        <div class="scenario-mini-tag">Fractional executives</div>
+        <p class="scenario-mini-text">A startup raises a Series A but can't afford a <strong>full-time CFO</strong> yet. They need senior financial leadership without the headcount cost. <strong>No Brainer surfaces that funding signal the moment it happens — so fractional executives can reach out before the founder starts asking around.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
   <section class="section">
     <div class="section-label">The signals</div>
-    <h2>Four signals that predict<br>buying intent</h2>
-    <p class="section-sub">Every company is scored weekly based on what's happening right now — not last quarter.</p>
-    <div class="signals-grid">
-      <div class="signal-card">
-        <div class="signal-icon green">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="3" stroke="#c8f562" stroke-width="1.5"/><path d="M2 14c0-3.314 2.686-5 6-5s6 1.686 6 5" stroke="#c8f562" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </div>
-        <div class="signal-pts">+3 pts</div>
-        <div class="signal-title">Leadership hire</div>
-        <div class="signal-desc">A VP, Director, C-level, or Head of hired in the last 7 days. New leaders bring new budgets and new vendor decisions.</div>
-      </div>
-      <div class="signal-card">
-        <div class="signal-icon blue">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="2" stroke="#6399ff" stroke-width="1.5"/><path d="M5 7h6M5 10h4" stroke="#6399ff" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </div>
-        <div class="signal-pts">+1 pt each · max 3</div>
-        <div class="signal-title">Job openings</div>
-        <div class="signal-desc">Roles posted recently. Active hiring is a direct signal of growth mode and active spending.</div>
-      </div>
-      <div class="signal-card">
-        <div class="signal-icon amber">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2L9.8 6.2L14 7L11 9.8L11.8 14L8 11.8L4.2 14L5 9.8L2 7L6.2 6.2L8 2Z" stroke="#ef9f27" stroke-width="1.5" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="signal-pts">+2 pts</div>
-        <div class="signal-title">Company news</div>
-        <div class="signal-desc">Product launches, new client wins, and partnerships in the last 14 days.</div>
-      </div>
-      <div class="signal-card">
-        <div class="signal-icon pink">
+    <h2>Four things that tell you<br>a startup is ready to spend</h2>
+    <p class="section-sub">Every Sunday we surface the companies where something just changed — verified by humans before it lands in your inbox.</p>
+
+    <div class="signals-strip">
+      <div class="signal-item">
+        <div class="signal-item-icon pink">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v2M8 11v2M3 8H5M11 8h2" stroke="#d4537e" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="8" r="3" stroke="#d4537e" stroke-width="1.5"/></svg>
         </div>
-        <div class="signal-pts">+5 pts</div>
-        <div class="signal-title">Recent funding</div>
-        <div class="signal-desc">Raised in the last 7 days. Fresh capital means active vendor decisions happening right now.</div>
+        <div class="signal-item-title">Recent funding</div>
+        <div class="signal-item-desc">Raised in the last 7 days. Fresh capital means active vendor decisions happening right now.</div>
+      </div>
+      <div class="signal-item">
+        <div class="signal-item-icon green">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="3" stroke="#c8f562" stroke-width="1.5"/><path d="M2 14c0-3.314 2.686-5 6-5s6 1.686 6 5" stroke="#c8f562" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="signal-item-title">Leadership hire</div>
+        <div class="signal-item-desc">New VP, Director, or C-level in the last 7 days. New leaders bring new budgets and new vendor decisions.</div>
+      </div>
+      <div class="signal-item">
+        <div class="signal-item-icon blue">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="2" stroke="#6399ff" stroke-width="1.5"/><path d="M5 7h6M5 10h4" stroke="#6399ff" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="signal-item-title">Job openings</div>
+        <div class="signal-item-desc">Roles posted recently. Active hiring means active spending — and active vendor decisions.</div>
+      </div>
+      <div class="signal-item">
+        <div class="signal-item-icon amber">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2L9.8 6.2L14 7L11 9.8L11.8 14L8 11.8L4.2 14L5 9.8L2 7L6.2 6.2L8 2Z" stroke="#ef9f27" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="signal-item-title">Company news</div>
+        <div class="signal-item-desc">Product launches, new client wins, and partnerships in the last 14 days.</div>
       </div>
     </div>
   </section>
@@ -656,7 +754,7 @@
   <section class="section">
     <div class="section-label">This week's digest</div>
     <h2>What lands in your inbox<br>every Sunday</h2>
-    <p class="section-sub">The highest-signal companies that week, ranked by score, with context on why each one matters and direct links to every signal.</p>
+    <p class="section-sub">The highest-signal companies that week, with context on why each one matters and direct links to every signal.</p>
     <div class="digest-preview">
       <div class="digest-header">
         <div class="digest-title-bar">NO BRAINER · B2B SAAS SEGMENT · WEEK OF APR 1, 2026</div>
@@ -712,18 +810,18 @@
       </div>
       <div>
         <div class="step-num">02</div>
-        <div class="step-title">Signals are scored</div>
-        <div class="step-desc">Each company receives a weekly score based on how many signals fired and how recent they are.</div>
+        <div class="step-title">Signals are identified</div>
+        <div class="step-desc">We surface the companies where something just changed — a new hire, a funding round, a client win, or a surge in open roles.</div>
       </div>
       <div>
         <div class="step-num">03</div>
-        <div class="step-title">Humans curate the list</div>
-        <div class="step-desc">Every signal is verified before it makes the cut. No hallucinated hires, no stale news, no wrong LinkedIn profiles.</div>
+        <div class="step-title">Humans verify everything</div>
+        <div class="step-desc">Every signal is checked before it makes the cut. No hallucinated hires, no stale news, no wrong LinkedIn profiles.</div>
       </div>
       <div>
         <div class="step-num">04</div>
         <div class="step-title">You get it Sunday</div>
-        <div class="step-desc">Delivered before your week starts — so you know exactly who to call on Monday morning.</div>
+        <div class="step-desc">Delivered before your week starts — so you know exactly who to reach out to when Monday hits.</div>
       </div>
     </div>
     <div class="built-bar">
