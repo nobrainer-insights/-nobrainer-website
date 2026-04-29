@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sample Edition · No Brainer Signal Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --canvas: #f5f5f0;
+    --white: #ffffff;
+    --ink: #1a1a1a;
+    --ink-light: #444;
+    --ink-muted: #888;
+    --green: #5a7a00;
+    --green-hover: #6e9600;
+    --border: #e0e0d8;
+    --rule: #c8c8c0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--canvas); color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.7; }
+  .bar { background: var(--ink); color: #e8e8e0; text-align: center; padding: 11px 20px; font-size: 13px; letter-spacing: 0.01em; }
+  .bar a { color: #b8d44a; text-decoration: none; font-weight: 500; border-bottom: 1px solid #b8d44a44; }
+  .bar a:hover { color: #d4f06a; }
+  header { background: var(--white); border-bottom: 1px solid var(--border); padding: 18px 32px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+  .wordmark { font-family: 'Playfair Display', serif; font-size: 21px; color: var(--ink); text-decoration: none; letter-spacing: -0.02em; }
+  .cta-btn { background: var(--ink); color: var(--white); padding: 9px 22px; border-radius: 4px; font-size: 13px; font-weight: 500; text-decoration: none; letter-spacing: 0.01em; transition: background 0.15s; }
+  .cta-btn:hover { background: var(--green); }
+  .hero-wrap { background: var(--white); border-bottom: 1px solid var(--border); }
+  .hero { max-width: 720px; margin: 0 auto; padding: 64px 32px 56px; text-align: center; }
+  .hero-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); margin-bottom: 16px; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: 42px; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 18px; }
+  .hero p { font-size: 16px; color: var(--ink-light); max-width: 520px; margin: 0 auto 32px; line-height: 1.65; }
+  .hero-meta { font-size: 12px; color: var(--ink-muted); letter-spacing: 0.02em; }
+  .subscribe-band { background: var(--green); padding: 20px 32px; display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; }
+  .subscribe-band p { color: var(--white); font-size: 14px; font-weight: 500; }
+  .subscribe-band a { background: var(--white); color: var(--green); padding: 9px 24px; border-radius: 4px; font-size: 13px; font-weight: 600; text-decoration: none; white-space: nowrap; transition: opacity 0.15s; }
+  .subscribe-band a:hover { opacity: 0.88; }
+  .digest-wrapper { max-width: 720px; margin: 0 auto; background: var(--white); border-left: 1px solid var(--border); border-right: 1px solid var(--border); }
+  .intro { padding: 40px 56px 32px; border-bottom: 1px solid var(--border); font-size: 14px; color: var(--ink-light); line-height: 1.75; }
+  .intro a { color: var(--green); text-decoration: none; font-style: italic; }
+  .intro a:hover { text-decoration: underline; }
+  .section-rule { border: none; border-top: 3px solid var(--ink); width: 60px; margin: 0 56px; }
+  .entry { padding: 44px 56px; border-bottom: 1px solid var(--border); }
+  .entry-number { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 10px; }
+  .entry h2 { font-family: 'Playfair Display', serif; font-size: 22px; letter-spacing: -0.01em; margin-bottom: 8px; }
+  .entry-meta { font-size: 12.5px; color: var(--ink-muted); margin-bottom: 18px; font-weight: 500; }
+  .entry-meta a { color: var(--green); text-decoration: none; font-style: italic; }
+  .entry-meta a:hover { text-decoration: underline; }
+  .entry p { font-size: 14px; color: var(--ink-light); line-height: 1.75; margin-bottom: 16px; }
+  .entry p a { color: var(--green); text-decoration: none; font-style: italic; }
+  .entry p a:hover { text-decoration: underline; }
+  .entry p strong { color: var(--ink); font-weight: 600; }
+  .entry p:last-child { margin-bottom: 0; }
+  .signal-divider { width: 40px; border: none; border-top: 1px solid var(--rule); margin: 20px 0; }
+  .spotlight { padding: 44px 56px; background: #f0f5e6; border-bottom: 1px solid var(--border); }
+  .spotlight-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); margin-bottom: 14px; }
+  .spotlight h2 { font-family: 'Playfair Display', serif; font-size: 20px; letter-spacing: -0.01em; margin-bottom: 8px; }
+  .spotlight p { font-size: 14px; color: var(--ink-light); line-height: 1.75; margin-bottom: 14px; }
+  .spotlight p a { color: var(--green); text-decoration: none; font-style: italic; }
+  .spotlight p a:hover { text-decoration: underline; }
+  .spotlight p:last-child { margin-bottom: 0; }
+  .bottom-cta { padding: 56px 32px; text-align: center; background: var(--ink); }
+  .bottom-cta h3 { font-family: 'Playfair Display', serif; font-size: 30px; color: var(--white); letter-spacing: -0.02em; margin-bottom: 12px; }
+  .bottom-cta p { color: #b0b0a0; font-size: 15px; margin-bottom: 28px; max-width: 440px; margin-left: auto; margin-right: auto; }
+  .bottom-cta .price-note { font-size: 13px; color: #888880; margin-top: 14px; }
+  .bottom-cta a.primary { display: inline-block; background: var(--green); color: var(--white); padding: 14px 36px; border-radius: 4px; font-size: 15px; font-weight: 500; text-decoration: none; transition: background 0.15s; }
+  .bottom-cta a.primary:hover { background: var(--green-hover); }
+  footer { background: #111; padding: 28px 32px; text-align: center; font-size: 12px; color: #666; }
+  footer a { color: #999; text-decoration: none; }
+  footer a:hover { color: #ccc; }
+  @media (max-width: 640px) {
+    .hero { padding: 44px 24px 36px; }
+    .hero h1 { font-size: 30px; }
+    .entry, .spotlight { padding: 36px 24px; }
+    .intro { padding: 28px 24px 24px; }
+    .section-rule { margin: 0 24px; }
+    header { padding: 16px 20px; }
+    .subscribe-band { flex-direction: column; text-align: center; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bar">Every Sunday. The B2B SaaS companies worth reaching out to. <a href="https://nobrainerinsights.com">Get access for $49/month</a></div>
+
+<header>
+  <a class="wordmark" href="https://nobrainerinsights.com">No Brainer</a>
+  <a class="cta-btn" href="https://nobrainerinsights.com">Get access</a>
+</header>
+
+<div class="hero-wrap">
+  <div class="hero">
+    <div class="hero-eyebrow">Sample Edition</div>
+    <h1>B2B SaaS Signal Intelligence</h1>
+    <p>Week of April 26, 2026. Eight companies. Every leadership hire, funding round, client win, and job signal that matters. Verified before it reaches you.</p>
+    <div class="hero-meta">B2B SaaS · Seed to Series B · US and Canada · Delivered every Sunday</div>
+  </div>
+</div>
+
+<div class="subscribe-band">
+  <p>Want this every Sunday morning? Full access starts at $49/month.</p>
+  <a href="https://nobrainerinsights.com">Get access</a>
+</div>
+
+<div class="digest-wrapper">
+
+  <div class="intro">
+    <a href="https://nobrainerinsights.com">No Brainer</a> surfaces the B2B SaaS companies showing the strongest buying signals each week. This edition covers Seed through Series B companies headquartered in the US and Canada, scanned weekly for leadership hires, product launches, new client wins, and job openings. <a href="https://docs.google.com/spreadsheets/d/1EA97My94EW-OiwJwfrjYI5QcqgyXCPfeZaIyYFlVhLM/edit?usp=sharing">Full signal data is attached</a>.
+  </div>
+
+  <hr class="section-rule">
+
+  <div class="entry">
+    <div class="entry-number">01</div>
+    <h2>Gridware</h2>
+    <div class="entry-meta">San Francisco, CA · Series B · 101–250 employees · <a href="https://www.linkedin.com/company/gridwareinc" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://gridware.io" target="_blank" rel="noopener">Website</a></div>
+    <p>Gridware builds the grid intelligence layer that utilities have been missing. Its pole-mounted Gridscope sensors monitor the physical, electrical, and environmental conditions of power infrastructure in real time, detecting hazards like fallen limbs, arcing, and mechanical failures before they cause outages or wildfires. The platform powers what the company calls Active Grid Response: immediate detection, precise fault localization, and continuous monitoring even during outages. Utility partners collectively serve roughly 40% of electricity customers in the US. One partner, Duquesne Light, earned a national innovation award after deploying 1,700 additional Gridscopes following its initial rollout. Gridware reported 7x year-over-year revenue growth through mid-2025 and reached cash flow positivity before its Series A. The company raised <a href="https://www.businesswire.com/news/home/20251117004576/en/Gridware-Raises-$55-Million-Growth-Round-to-Accelerate-U.S.-Deployments-and-Support-Global-Expansion" target="_blank" rel="noopener">$55M Series B</a> in November 2025 led by Tiger Global and Generation Investment Management, with continued backing from Sequoia Capital and Y Combinator, and is now expanding into the UK and continental Europe.</p>
+    <hr class="signal-divider">
+    <p><strong>Signal:</strong> <a href="https://www.linkedin.com/in/jkevinahern/" target="_blank" rel="noopener">Kevin Ahern</a> joined this month as Director of Business Development, stepping into a role at the front of enterprise utility sales. Gridware is actively hiring across 29 open roles on LinkedIn, including a <a href="https://www.linkedin.com/jobs/view/software-engineering-manager-at-gridware-4400852314" target="_blank" rel="noopener">Software Engineering Manager</a> and <a href="https://www.linkedin.com/jobs/view/senior-ml-engineer-multi-sensor-modeling-at-gridware-4381735899" target="_blank" rel="noopener">Senior ML Engineer, Multi-Sensor Modeling</a>, signaling simultaneous commercial and technical expansion.</p>
+    <p><strong>Who should reach out:</strong> B2B sales consultants, demand gen agencies, and content strategists with energy, utilities, or infrastructure experience. Kevin Ahern is new, actively building his approach to a complex enterprise sale into a highly regulated buyer. Utility procurement cycles are long, technical, and relationship-driven. If you have experience selling into or writing for grid operators, public utilities, or critical infrastructure buyers, reach out to Kevin directly. The window to influence how he structures his go-to-market is open now and will not stay open long.</p>
+  </div>
+
+  <div class="entry">
+    <div class="entry-number">02</div>
+    <h2>Formic Technologies</h2>
+    <div class="entry-meta">Chicago, IL · Series B · 51–100 employees · <a href="https://www.linkedin.com/company/formic-technologies" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://formic.co" target="_blank" rel="noopener">Website</a></div>
+    <p>Formic makes industrial robotics accessible to small and mid-sized US manufacturers through a Robots-as-a-Service model: no upfront capital, no expertise required, one flat monthly rate. The company deploys robotic systems for end-of-line case packing, palletizing, and floor cleaning, bundled with full maintenance, 24/7 support, and its Formic Production Intelligence software that surfaces real-time operational data across the line. In 2025, Formic surpassed 500,000 production hours, making it the largest independent robot fleet in the US, and grew deployments fivefold. Customers include Land O'Frost, Boxed Water, and ICON Injection Molding, with reported reductions of 20 to 40% in operational costs. The company has raised $59M total across multiple rounds.</p>
+    <hr class="signal-divider">
+    <p><strong>Signal:</strong> Two internal promotions in March signal a maturing leadership structure. <a href="https://www.linkedin.com/in/danijellolic/" target="_blank" rel="noopener">Danijel Lolic</a> stepped up to Chief Operating Officer and <a href="https://www.linkedin.com/in/nick-delong-2506219a/" target="_blank" rel="noopener">Nick DeLong</a> to Vice President of Automation Engineering. Both come to their new titles with expanded mandates and new budget authority after nearly four years building the company. Formic is actively hiring across 37 open roles on LinkedIn, the highest count in this digest, including an <a href="https://www.linkedin.com/jobs/view/automation-sales-manager-at-formic-4372068450" target="_blank" rel="noopener">Automation Sales Manager</a> and <a href="https://www.linkedin.com/jobs/view/robotics-field-service-engineer-at-formic-4373629546" target="_blank" rel="noopener">Robotics Field Service Engineer</a>, reflecting national expansion on both the commercial and operational side.</p>
+    <p><strong>Who should reach out:</strong> Operations consultants, ERP and manufacturing SaaS vendors, and content agencies with industrial or supply chain experience. Both Lolic as COO and DeLong as VP of Engineering are stepping into broader decision-making authority over the operational and technical stack at a company actively scaling across the country. Companies that sell into manufacturing operations, including workforce tools, ERP integrations, production analytics, or automation consulting, have a defined opening here. Reach out while both leaders are still establishing their vendor relationships.</p>
+  </div>
+
+  <div class="entry">
+    <div class="entry-number">03</div>
+    <h2>Proof Technology</h2>
+    <div class="entry-meta">Denver, CO · Series B · 101–250 employees · <a href="https://www.linkedin.com/company/proofapp" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://www.proofserve.com" target="_blank" rel="noopener">Website</a></div>
+    <p>Proof is the legal technology platform that has modernized service of process. Law firms use Proof to create serves, connect instantly with vetted process servers across all 50 states, track progress in real time, and receive digital affidavits with GPS data and photo documentation. The platform integrates with Clio, Filevine, and MyCase, and recently launched a Chrome extension that reduces document handling time for Filevine users by 75%. Proof has raised $62.6M across multiple rounds, most recently closing a Series B in late 2025.</p>
+    <hr class="signal-divider">
+    <p><strong>Signal:</strong> <a href="https://www.linkedin.com/in/matt-heller-57a37/" target="_blank" rel="noopener">Matt Heller</a> joined this month as VP of Property Management and Collections, Revenue and Strategy. He brings a track record of enterprise SaaS revenue leadership, including building $13.5M in pipeline in six months at his prior role. Proof is actively hiring across 17 open roles on LinkedIn, including an <a href="https://www.linkedin.com/jobs/view/account-executive-west-at-proof-4405254878" target="_blank" rel="noopener">Account Executive (West)</a>, <a href="https://www.linkedin.com/jobs/view/client-success-manager-law-firms-west-at-proof-4405269065" target="_blank" rel="noopener">Client Success Manager for Law Firms (West)</a>, and <a href="https://www.linkedin.com/jobs/view/product-manager-platform-services-at-proof-4405251933" target="_blank" rel="noopener">Product Manager, Platform and Services</a>, signaling active expansion across sales, customer success, and product simultaneously.</p>
+    <p><strong>Who should reach out:</strong> Legal SaaS vendors, revenue operations consultants, and agencies with law firm or legal tech experience. Matt Heller is new and actively defining his revenue strategy. The simultaneous hiring of AEs, CSMs, and a Product Manager tells you this is a company building out every layer of the commercial motion at once. If you sell tools that complement legal operations or support revenue teams at legal tech companies, reach out to Matt before his vendor list is set.</p>
+  </div>
+
+  <div class="entry">
+    <div class="entry-number">04</div>
+    <h2>Quindar</h2>
+    <div class="entry-meta">Arvada, CO · Series A · 11–50 employees · <a href="https://www.linkedin.com/company/quindarspace" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://quindar.space" target="_blank" rel="noopener">Website</a></div>
+    <p>Quindar builds cloud-native mission management software for satellite operators, replacing fragmented custom-built ground systems with a unified platform that automates the entire mission lifecycle from planning and flight dynamics to command, control, and event management. Founded by former OneWeb engineers, the company's platform connects satellites from different manufacturers into a single operating picture and has achieved integration with new in-space assets in as few as 23 days, versus the decade-plus timeline typical of government ground system builds. Quindar raised <a href="https://www.quindar.space/blog-article/quindar-raises-18m-series-a-to-accelerate-the-next-generation-of-u-s-mission-control" target="_blank" rel="noopener">$18M Series A</a> in November 2025 led by Washington Harbour Partners, with Booz Allen Ventures and Y Combinator participating, and is building a classified facility in the Denver metro area expected to be operational by late 2026.</p>
+    <hr class="signal-divider">
+    <p><strong>Signal:</strong> <a href="https://www.linkedin.com/in/hunter-garbacz/" target="_blank" rel="noopener">Hunter Garbacz</a> was promoted this month to Director of Business Development and Government Affairs, expanding his mandate from commercial BD into the US government market. This is a deliberate move tied directly to the classified facility build and Quindar's Space Force and DoD relationships. Quindar is actively hiring across 19 open roles on LinkedIn, including two <a href="https://www.linkedin.com/jobs/view/senior-director-of-business-development-us-government-at-quindar-4405424381" target="_blank" rel="noopener">Senior Director of Business Development, US Government</a> positions open across two office locations and a <a href="https://www.linkedin.com/jobs/view/platform-product-manager-at-quindar-4403532171" target="_blank" rel="noopener">Platform Product Manager</a>.</p>
+    <p><strong>Who should reach out:</strong> Government affairs consultants, defense technology advisors, and B2B content strategists with space, aerospace, or national security experience. Hunter's expanded role into government affairs is the signal. Quindar is actively pursuing classified contracts alongside commercial growth and needs expertise in navigating procurement cycles, compliance positioning, and government relationships. If you sell services or consulting that helps deep tech companies access government buyers, reach out to Hunter now. The two open Senior Director of BD Government roles confirm this is not a future priority. It is happening right now.</p>
+  </div>
+
+  <div class="entry">
+    <div class="entry-number">05</div>
+    <h2>Athian</h2>
+    <div class="entry-meta">Indianapolis, IN · Series A · 11–50 employees · <a href="https://www.linkedin.com/company/athian-inc" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://www.athian.ai" target="_blank" rel="noopener">Website</a></div>
+    <p>Athian operates the first carbon insetting marketplace for livestock agriculture. The platform helps dairy and beef producers implement verified greenhouse gas reduction practices, certifies those reductions through third-party auditing, and connects them to food companies like Amazon Fresh, Land O' Lakes, Whole Foods, and California Dairies that need verified Scope 3 emissions credits. Athian handles the full pipeline: data entry, digital measurement and verification, certification, and marketplace transactions. In 2025, Athian facilitated $18M in payments to producers for verified on-farm reductions. The company raised a $4M Series A in November 2025 from Chipotle's Cultivate Next Fund, Mondelez International, Ajinomoto Group Ventures, and Tyson Ventures, with investors spanning every step of the food supply chain from farm to fork. Athian was <a href="https://wilmingtonbiz.com/technology/2026/04/08/athian_brings_ag-tech_to_wilmington/27381" target="_blank" rel="noopener">featured this month in Wilmington Business Journal</a> as it expands its reach into new markets.</p>
+    <hr class="signal-divider">
+    <p><strong>Signal:</strong> <a href="https://www.linkedin.com/in/kendra-tolley/" target="_blank" rel="noopener">Kendra Tolley</a> transitioned this month from Chief Product Officer to Chief Commercial Officer after nearly four years building the product. Her new mandate covers revenue growth, market expansion, sales, marketing, product management, and customer success across the food supply chain. This is a company moving from product validation to commercial scale, with a CCO now in seat to lead that push. <a href="https://www.linkedin.com/in/kierstan-rhodes-40824013b/" target="_blank" rel="noopener">Kierstan Rhodes</a> is also in place as Director of Strategic Accounts and Initiatives, building the enterprise relationship layer.</p>
+    <p><strong>Who should reach out:</strong> Sustainability consultants, AgTech and food supply chain advisors, and content agencies with ESG or Scope 3 experience. Kendra Tolley now holds the full commercial mandate at a company whose buyers are VP-level sustainability and procurement executives at major food brands. Athian is moving into beef and international markets in 2026. If you advise food companies on Scope 3 strategy, build content for AgTech or sustainability platforms, or work with CPG brands on supply chain communications, Kendra is defining her go-to-market right now.</p>
+  </div>
+
+  <div class="entry">
+    <div class="entry-number">06</div>
+    <h2>Mappedin</h2>
+    <div class="entry-meta">Waterloo, ON · Series B · 101–250 employees · <a href="https://www.linkedin.com/company/mappedin" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://www.mappedin.com" target="_blank" rel="noopener">Website</a></div>
+    <p>Mappedin is the platform for digital indoor mapping. Using AI and LiDAR, the company transforms static floor plans and spatial data into dynamic 3D maps that power navigation, operations, analytics, and safety across complex indoor environments. Customers include Simon Property Group, Los Angeles International Airport, and Super Bowl stadiums. The platform guides over 450 million visitors annually and has mapped more than 10 billion square feet across 86 countries. Less than 1% of global indoor space has been digitally mapped, making this a market still in its earliest stages.</p>
+    <hr class="signal-divider">
+    <p><strong>Signal:</strong> Mappedin <a href="https://www.businesswire.com/news/home/20260407989088/en/Mappedin-Secures-$24.5M-Growth-Investment-Led-by-Edison-Partners-to-Map-the-Worlds-Indoor-Spaces" target="_blank" rel="noopener">raised $24.5M Series B on April 7</a>, led by Edison Partners with Betatron Venture Group participating, bringing total funding to more than $35M. The round marks a deliberate strategic shift: from mapping individual buildings to city-scale indoor mapping infrastructure, with the platform now opened to first responders, safety organizations, and third-party developers. Mappedin is hiring across 3 open roles on LinkedIn including a <a href="https://www.linkedin.com/jobs/view/senior-sales-engineer-at-mappedin-4404250155" target="_blank" rel="noopener">Senior Sales Engineer</a> and a <a href="https://www.linkedin.com/jobs/view/patent-agent-at-mappedin-4404245565" target="_blank" rel="noopener">Patent Agent</a>, signaling active enterprise sales expansion and IP protection investment alongside the raise.</p>
+    <p><strong>Who should reach out:</strong> Real estate technology vendors, PropTech agencies, public safety consultants, and content strategists with commercial real estate, airports, or smart building experience. Mappedin closed a Series B this month and announced a new market expansion thesis in the same breath. CEO <a href="https://www.linkedin.com/in/hongweil/" target="_blank" rel="noopener">Hongwei Liu</a> has stated publicly that most of the market still does not know Mappedin exists. That is a positioning and demand generation gap at a company with $24.5M in fresh capital and a product already embedded in some of the highest-traffic buildings in North America. If you help enterprise SaaS companies build awareness and enter new verticals, the timing here is precise.</p>
+  </div>
+
+  <div class="entry">
+    <div class="entry-number">07</div>
+    <h2>MindCloud</h2>
+    <div class="entry-meta">Clearwater, FL · Seed · 11–50 employees · <a href="https://www.linkedin.com/company/yourmindcloud" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://mindcloud.co" target="_blank" rel="noopener">Website</a></div>
+    <p>MindCloud is an iPaaS company that builds custom integrations between software platforms, removing the manual data entry and disconnected workflows that slow operations teams down. The platform specializes in connecting field service tools, CRMs, and ERPs for mid-market companies that need reliable integrations without the engineering overhead to build or maintain them in-house.</p>
+    <hr class="signal-divider">
+    <p><strong>Signal:</strong> <a href="https://www.landscapemanagement.net/inc-names-mindcloud-on-list-of-the-fastest-growing-private-companies-in-the-southeast" target="_blank" rel="noopener">Inc. named MindCloud No. 14 on its 2026 Regionals: Southeast list</a> and 4th among software companies in the region, reflecting 607% revenue growth over the two-year period ending in 2024. The recognition was published this month. MindCloud currently has 1 open role: <a href="https://www.linkedin.com/jobs/view/marketing-manager-at-mindcloud-4405803520" target="_blank" rel="noopener">Marketing Manager</a>.</p>
+    <p><strong>Who should reach out:</strong> B2B marketing agencies and freelance content strategists. The Marketing Manager role is open at a Seed-stage company with a concrete, verified growth story and no established marketing infrastructure. The Inc. recognition gives you a real hook right now. The person hired into this role will need positioning, content, and campaign infrastructure built from scratch. If you specialize in helping B2B software companies build their marketing motion at the early stage, reach out now before the role is filled.</p>
+  </div>
+
+  <div class="entry">
+    <div class="entry-number">08</div>
+    <h2>CurbWaste</h2>
+    <div class="entry-meta">New York, NY · Series B · 11–50 employees · <a href="https://www.linkedin.com/company/curbwaste" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://curbwaste.com" target="_blank" rel="noopener">Website</a></div>
+    <p>CurbWaste is the operating system for independent waste haulers. The platform handles order management, dispatching, routing, billing, driver mobile apps, and real-time fleet visibility in a single system built specifically for this industry. CEO Mike Marmo founded the company after running a family hauling operation and experiencing firsthand the gap between what the industry needed and what existing software offered. CurbWaste now serves 150 haulers across 40 states, with customers reporting 20% cash flow improvement and 30%+ revenue growth. The company raised <a href="https://www.prnewswire.com/news-releases/curbwaste-raises-28m-to-bring-modern-tech-to-the-backbone-of-the-american-economy-independent-waste-haulers-302588009.html" target="_blank" rel="noopener">$28M Series B</a> in October 2025 led by Socium Ventures, the venture arm of Cox Enterprises, bringing total funding to $50M. The round is explicitly allocated to AI capabilities, business intelligence tools, and team growth.</p>
+    <hr class="signal-divider">
+    <p><strong>Signal:</strong> CurbWaste is actively hiring across 9 open roles on LinkedIn, with two standing out as direct signals of where the product is headed: <a href="https://www.linkedin.com/jobs/view/4402551074" target="_blank" rel="noopener">Head of Growth</a> and <a href="https://www.linkedin.com/jobs/view/4402289803" target="_blank" rel="noopener">Head of AI</a>. Both are senior hires at a company that has just committed Series B capital specifically to AI and growth expansion. Additional open roles include a <a href="https://www.linkedin.com/jobs/view/senior-product-manager-dispatch-driver-experience-at-curbwaste-4404848783" target="_blank" rel="noopener">Senior Product Manager for Dispatch and Driver Experience</a> and an <a href="https://www.linkedin.com/jobs/view/analytics-engineer-at-curbwaste-4403798467" target="_blank" rel="noopener">Analytics Engineer</a>.</p>
+    <p><strong>Who should reach out:</strong> Vertical SaaS vendors, operations consultants, growth consultants, and B2B content agencies with logistics, fleet, or field service experience. The Head of Growth and Head of AI are both being hired right now, which means the person who eventually fills those seats does not yet exist and their vendor list is blank. If you sell growth infrastructure, AI tooling, or content services to operational SaaS companies, reach out to the existing leadership team while those roles are still being filled. The buyer at a waste hauling business is an owner-operator making practical decisions based on time savings and margin improvement. If you can speak that language, the door is open.</p>
+  </div>
+
+  <div class="spotlight">
+    <div class="spotlight-label">Marketing Hire Spotlight</div>
+    <h2>Augmentt</h2>
+    <div class="entry-meta">Ottawa, ON · Series A · <a href="https://www.linkedin.com/company/augmentt" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://augmentt.com" target="_blank" rel="noopener">Website</a></div>
+    <p>Augmentt builds the Microsoft 365 security and SaaS management platform for Managed Service Providers. MSPs use Augmentt to monitor, secure, and manage their clients' cloud environments at scale, with visibility into shadow IT, app usage, compliance posture, and security policy enforcement across every tenant they manage. The company raised CAD $18M Series A in November 2025 led by Camber Partners, founded by the former leadership team behind N-able.</p>
+    <p><a href="https://www.linkedin.com/in/sean-lauer-4b7998a/" target="_blank" rel="noopener">Sean Lauer</a> joined this month as VP of Marketing. Sean was previously VP of Marketing at Instruqt, where he built the sales-led marketing engine that delivered 35% YoY ARR growth and a 92% reduction in cost per lead, and earlier built the product marketing function at Mural through its Series A to $100M ARR run.</p>
+    <p>Sean is building the marketing function at Augmentt from scratch with Series A capital and a product that solves a specific, urgent problem for MSPs who are under pressure to deliver more security with smaller teams. The MSP buyer is technical, skeptical of vendor noise, and responds to specificity. If you write B2B SaaS content for technical buyers, have experience in IT security or managed services, or specialize in demand gen for channel-led businesses, reach out to Sean directly. He knows what good looks like and is actively building his vendor relationships now.</p>
+  </div>
+
+</div>
+
+<div class="bottom-cta">
+  <h3>Get this every Sunday.</h3>
+  <p>Eight companies. Every leadership hire, funding round, and job signal that matters. Verified before it reaches your inbox.</p>
+  <a class="primary" href="https://nobrainerinsights.com">Get access at nobrainerinsights.com</a>
+  <div class="price-note">Solo plan $49/month · Team plan $99/month · Cancel anytime</div>
+</div>
+
+<footer>
+  <p>No Brainer · B2B SaaS Signal Intelligence · <a href="https://nobrainerinsights.com">nobrainerinsights.com</a></p>
+</footer>
+
+</body>
+</html>
